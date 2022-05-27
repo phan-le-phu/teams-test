@@ -8,6 +8,12 @@
 
       microsoftTeams.pages.config.setValidityState(true);
 
+      const contextPromise = microsoftTeams.app.getContext();
+      contextPromise.
+        then((context) => {
+          console.log(context.app.appLaunchId);
+        })
+
       microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
         const configPromise = pages.config.setConfig({
           websiteUrl: "",
@@ -17,11 +23,7 @@
         })
       })
 
-      const contextPromise = microsoftTeams.app.getContext();
-      contextPromise.
-        then((context) => {
-          console.log(context.app.appLaunchId);
-        })
+
     </script>
 
 </body>
