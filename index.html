@@ -6,9 +6,9 @@
     <script>
       microsoftTeams.app.initialize();
 
-      pages.config.setValidityState(true);
+      microsoftTeams.pages.config.setValidityState(true);
 
-      page.config.registerOnSaveHandler((saveEvent) => {
+      microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
         const configPromise = pages.config.setConfig({
           websiteUrl: "",
           contentUrl: "",
