@@ -16,6 +16,12 @@
           suggestedDisplayName: "MyNewTab"
         })
       })
+
+      const contextPromise = microsoftTeams.app.getContext();
+      contextPromise.
+        then((context) => {
+          console.log(context.app.appLaunchId);
+        })
     </script>
 
 </body>
