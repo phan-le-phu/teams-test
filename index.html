@@ -16,14 +16,10 @@
 
       microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
         const configPromise = pages.config.setConfig({
-          websiteUrl: "",
-          contentUrl: "",
+          websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
+          contentUrl: "https://detect-request-teams-app.herokuapp.com/",
           entityId: "newTab",
-<<<<<<< HEAD
-          suggestedDisplayName: "MyNewT"
-=======
-          suggestedDisplayName: "MyNewTa"
->>>>>>> main
+          suggestedDisplayName: "MyNewTab"
         })
       })
 
