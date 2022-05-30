@@ -2,19 +2,29 @@
     <script src='MicrosoftTeams.min.js'></script>
 </head>
 <body>
+    <button id="Gray" onclick="(document.getElementById('icon').src = '/images/iconGray.png'); colorClickGray()">Select Gray</button>
+
     <script>
-        microsoftTeams.app.initialize();
-        microsoftTeams.pages.config.setValidityState(true);
-        microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
-            const configPromise = microsoftTeams.pages.config.setConfig({
+        app.initialize();
+        let saveGray = () => {
+            pages.config.registerOnSaveHandler((saveEvent) => {
+                const configPromise = pages.config.setConfig({
                     websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
                     contentUrl: "https://detect-request-teams-app.herokuapp.com/",
-                    entityId: "idTab",
-                    suggestedDisplayName: "New Tab"
+                    entityId: "grayIconTab",
+                    suggestedDisplayName: "MyNewTab"
                 });
                 configPromise.
-                    then((result) => {saveEvent.notifySuccess();}).
+                    then((result) => {saveEvent.notifySuccess()}).
                     catch((error) => {saveEvent.notifyFailure("failure message")});
-        });
+            });
+        }
+        let gr = document.getElementById("gray").style;
+
+        const colorClickGray = () => {
+            pages.config.setValidityState(true);
+            saveGray()
+        }
+
     </script>
 </body>
