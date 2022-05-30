@@ -2,11 +2,10 @@
     <script src='MicrosoftTeams.min.js'></script>
 </head>
 <body>
-    <button id="gray" onclick="configClick()">Select config</button>
+    <button id="gray" onclick="configClick()">Deo biet gi</button>
 
     <script>
         microsoftTeams.app.initialize();
-        microsoftTeams.pages.config.setValidityState(true);
         let setConfig = () => {
             microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
                 const configPromise = microsoftTeams.pages.config.setConfig({
@@ -20,7 +19,11 @@
                     catch((error) => {saveEvent.notifyFailure("failure message")});
             });
         }
-        setConfig();
+
+        const configClick= () => {
+            microsoftTeams.pages.config.setValidityState(true);
+            setConfig();
+        }
 
     </script>
 </body>
