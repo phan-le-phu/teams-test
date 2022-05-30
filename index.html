@@ -5,10 +5,10 @@
     <button id="Gray" onclick="(document.getElementById('icon').src = '/images/iconGray.png'); colorClickGray()">Select Gray</button>
 
     <script>
-        app.initialize();
+        microsoftTeams.app.initialize();
         let saveGray = () => {
-            pages.config.registerOnSaveHandler((saveEvent) => {
-                const configPromise = pages.config.setConfig({
+            microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
+                const configPromise = microsoftTeams.pages.config.setConfig({
                     websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
                     contentUrl: "https://detect-request-teams-app.herokuapp.com/",
                     entityId: "grayIconTab",
@@ -22,7 +22,7 @@
         let gr = document.getElementById("gray").style;
 
         const colorClickGray = () => {
-            pages.config.setValidityState(true);
+            microsoftTeams.pages.config.setValidityState(true);
             saveGray()
         }
 
