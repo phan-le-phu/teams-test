@@ -7,10 +7,10 @@
     <button onclick="(document.getElementById('icon').src = '/images/iconRed.png'); colorClickRed()">Select Red</button>
 
     <script>
-        app.initialize();
+        microsoftTeams.app.initialize();
         let saveGray = () => {
-            pages.config.registerOnSaveHandler((saveEvent) => {
-                const configPromise = pages.config.setConfig({
+            microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
+                const configPromise = microsoftTeams.pages.config.setConfig({
                     websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
                     contentUrl: "https://detect-request-teams-app.herokuapp.com/",
                     entityId: "grayIconTab",
@@ -23,8 +23,8 @@
         }
 
         let saveRed = () => {
-            pages.config.registerOnSaveHandler((saveEvent) => {
-                const configPromise = pages.config.setConfig({
+            microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
+                const configPromise = microsoftTeams.pages.config.setConfig({
                     websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
                     contentUrl: "https://detect-request-teams-app.herokuapp.com/",
                     entityId: "redIconTab",
@@ -42,14 +42,14 @@
         const colorClickGray = () => {
             gr.display = "block";
             rd.display = "none";
-            pages.config.setValidityState(true);
+            microsoftTeams.pages.config.setValidityState(true);
             saveGray()
         }
 
         const colorClickRed = () => {
             rd.display = "block";
             gr.display = "none";
-            pages.config.setValidityState(true);
+            pmicrosoftTeams.ages.config.setValidityState(true);
             saveRed();
         }
     </script>
