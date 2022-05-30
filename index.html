@@ -1,29 +1,56 @@
 <head>
-  <script src="MicrosoftTeams.min.js"></script>
+    <script src='https://statics.teams.cdn.office.net/sdk/v2.0.0/js/MicrosoftTeams.min.js'></script>
 </head>
 <body>
-    <h1>Con mua thang 11</h1>
+    <button onclick="(document.getElementById('icon').src = '/images/iconGray.png'); colorClickGray()">Select Gray</button>
+    <img id="icon" src="/images/teamsIcon.png" alt="icon" style="width:100px" />
+    <button onclick="(document.getElementById('icon').src = '/images/iconRed.png'); colorClickRed()">Select Red</button>
+
     <script>
-      microsoftTeams.app.initialize();
+        app.initialize();
+        let saveGray = () => {
+            pages.config.registerOnSaveHandler((saveEvent) => {
+                const configPromise = pages.config.setConfig({
+                    websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
+                    contentUrl: "https://detect-request-teams-app.herokuapp.com/",
+                    entityId: "grayIconTab",
+                    suggestedDisplayName: "MyNewTab"
+                });
+                configPromise.
+                    then((result) => {saveEvent.notifySuccess()}).
+                    catch((error) => {saveEvent.notifyFailure("failure message")});
+            });
+        }
 
-      microsoftTeams.pages.config.setValidityState(true);
+        let saveRed = () => {
+            pages.config.registerOnSaveHandler((saveEvent) => {
+                const configPromise = pages.config.setConfig({
+                    websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
+                    contentUrl: "https://detect-request-teams-app.herokuapp.com/",
+                    entityId: "redIconTab",
+                    suggestedDisplayName: "MyNewTab"
+                });
+                configPromise.
+                    then((result) => {saveEvent.notifySuccess();}).
+                    catch((error) => {saveEvent.notifyFailure("failure message")});
+            });
+        }
 
-      const contextPromise = microsoftTeams.app.getContext();
-      contextPromise.
-        then((context) => {
-          console.log(context.app.appLaunchId);
-        })
+        let gr = document.getElementById("gray").style;
+        let rd = document.getElementById("red").style;
 
-      microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
-        const configPromise = pages.config.setConfig({
-          websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
-          contentUrl: "https://detect-request-teams-app.herokuapp.com/",
-          entityId: "newTab",
-          suggestedDisplayName: "MyNewTab"
-        })
-      })
+        const colorClickGray = () => {
+            gr.display = "block";
+            rd.display = "none";
+            pages.config.setValidityState(true);
+            saveGray()
+        }
 
-
+        const colorClickRed = () => {
+            rd.display = "block";
+            gr.display = "none";
+            pages.config.setValidityState(true);
+            saveRed();
+        }
     </script>
-
 </body>
