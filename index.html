@@ -2,11 +2,11 @@
     <script src='MicrosoftTeams.min.js'></script>
 </head>
 <body>
-    <button id="gray" onclick="colorClickGray()">Select Gray</button>
+    <button id="gray" onclick="configClick()">Select config</button>
 
     <script>
         microsoftTeams.app.initialize();
-        let saveGray = () => {
+        let setConfig = () => {
             microsoftTeams.pages.config.registerOnSaveHandler((saveEvent) => {
                 const configPromise = microsoftTeams.pages.config.setConfig({
                     websiteUrl: "https://detect-request-teams-app.herokuapp.com/",
@@ -19,11 +19,10 @@
                     catch((error) => {saveEvent.notifyFailure("failure message")});
             });
         }
-        let gr = document.getElementById("gray").style;
 
-        const colorClickGray = () => {
+        const configClick= () => {
             microsoftTeams.pages.config.setValidityState(true);
-            saveGray()
+            setConfig();
         }
 
     </script>
